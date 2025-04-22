@@ -215,6 +215,9 @@ git push -u origin main
 # 合并时出现冲突
 git merge feature-branch	#把 feature-branch 分支上的修改合并到当前所在的分支
 
+# 拉取远程仓库的 main 分支，并允许合并不相关的历史记录
+git pull origin main --allow-unrelated-histories
+
 # 手动编辑冲突文件（标记<<<<<<< HEAD 和 ======= 之间为本地修改，>>>>>>> 为远程修改）
 
 # 解决后添加并提交
