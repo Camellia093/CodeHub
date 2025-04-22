@@ -78,9 +78,10 @@ git branch -a       # 所有分支
 
 ```
 # 操作分支
-git branch new-feature  # 创建分支
-git checkout new-feature # 切换分支
-git checkout -b new-feature # 创建并切换分支
+git branch new-feature		# 创建分支
+git branch -m master main	# 将本地 master 分支重命名为 main 分支
+git checkout new-feature	# 切换分支
+git checkout -b new-feature	# 创建并切换分支
 
 # 合并分支（在目标分支执行）
 git merge new-feature
