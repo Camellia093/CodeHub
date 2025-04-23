@@ -49,19 +49,19 @@ git config --list
 #### SSH配置和克隆仓库
 
 ```
-ssh-keygen -t rsa -b 4096 #生成SSH密钥，-t 指定协议为RSA,-b指定生成的大小为4096
+ssh-keygen -t rsa -b 4096	#生成SSH密钥，-t 指定协议为RSA,-b指定生成的大小为4096
 ```
 
-![生成SSH密钥](C:\Users\瑶怪\Desktop\Git\Git\生成SSH密钥.png)
+![生成SSH密钥](.\生成SSH密钥.png)
 
 ```
-vi test.pub  # 打开公钥文件，没有.pub是私钥文件，复制里面的公钥内容粘贴到gitHub密钥处
+vi test.pub		# 打开公钥文件，没有.pub是私钥文件，复制里面的公钥内容粘贴到gitHub密钥处
 :q    #退出编辑指令
 ```
 
 在gitHub网站上，点击个人用户，选择【Settings】设置（如下图1），然后在左边菜单栏中找到【SSH and GPG keys】选项（如下图2），在右边界面中选择绿色按钮【New SSH key】（如下图3），按照指示添加密钥相关数据即可。
 
-![pingtu-1745379328948](C:\Users\瑶怪\Desktop\Git\Git\pingtu-1745379328948.jpg)
+![pingtu-1745379328948](.\pingtu-1745379328948.jpg)
 
 
 
@@ -93,9 +93,9 @@ git commit -m "feat: 添加用户登录功能"   # 规范commit message
 # 修正最近一次提交，将新的更改合并到最近一次提交中
 git commit --amend -m "fix: 修复登录逻辑"
 
-git push #将本地仓库的内容推送到远程仓库中去
+git push	#将本地仓库的内容推送到远程仓库中去
 
-git pull #将远程仓库中的最新内容拉到已有的本地仓库中来
+git pull	#将远程仓库中的最新内容拉到已有的本地仓库中来
 ```
 
 ### 2.4 分支管理
@@ -111,9 +111,10 @@ git branch -a       # 所有分支
 
 ```
 # 操作分支
-git branch new-feature  # 创建分支
-git checkout new-feature # 切换分支
+git branch new-feature 		# 创建分支
+git checkout new-feature	# 切换分支
 git checkout -b new-feature # 创建并切换分支
+git branch -m master main	# 将本地 master 分支重命名为 main 分支
 
 # 合并分支（在目标分支执行）
 git merge new-feature
@@ -131,6 +132,10 @@ git remote add origin <远程仓库url>
 
 # 拉取/推送代码 以main分支为例
 git pull origin main       # 拉取最新代码			远程 --> 本地
+
+# 拉取远程仓库的 main 分支，并允许合并不相关的历史记录
+git pull origin main --allow-unrelated-histories
+
 git push origin main       # 推送本地代码到远程		本地 --> 远程
 
 # 查看远程仓库信息
