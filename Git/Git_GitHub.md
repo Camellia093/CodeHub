@@ -26,15 +26,44 @@
 
 ```
 # 设置用户名（全局/本地）  --global 选项的作用是把配置应用到全局层面
-git config --global user.name <你的用户名>
-git config user.name <你的项目名>
-
+git config --global user.name <你的用户名>   #如果你的用户名中有空格，需要加引号
 # 设置邮箱
 git config --global user.email <你的邮箱地址>
+###前面两个命令只需要配置一次即可
+
+# 保存用户名和密码（这样就不用每次输入了）
+git config --global credential.helper store
 
 # 查看配置
 git config --list
 ```
+
+
+
+远程仓库地址的两种方式：HTTPS 和 SSH。
+
+（1）HTTPS的方式：在我们把本地代码push到远程仓库的时候，需要验证用户名和密码。
+
+（2）SSH协议的方式：在推送的时候不需要验证用户名和密码，但需要在gitHub上添加SSH公钥的配置。（推荐这种方式，会更加安全、方便）
+
+#### SSH配置和克隆仓库
+
+```
+ssh-keygen -t rsa -b 4096 #生成SSH密钥，-t 指定协议为RSA,-b指定生成的大小为4096
+```
+
+![生成SSH密钥](C:\Users\瑶怪\Desktop\Git\Git\生成SSH密钥.png)
+
+```
+vi test.pub  # 打开公钥文件，没有.pub是私钥文件，复制里面的公钥内容粘贴到gitHub密钥处
+:q    #退出编辑指令
+```
+
+在gitHub网站上，点击个人用户，选择【Settings】设置（如下图1），然后在左边菜单栏中找到【SSH and GPG keys】选项（如下图2），在右边界面中选择绿色按钮【New SSH key】（如下图3），按照指示添加密钥相关数据即可。
+
+![pingtu-1745379328948](C:\Users\瑶怪\Desktop\Git\Git\pingtu-1745379328948.jpg)
+
+
 
 ## 二、Git 常用命令速查表
 
@@ -51,7 +80,7 @@ git config --list
 | ------------------ | ----------------------------------------------------- |
 | git status         | 查看文件状态(<u>未跟踪、已修改、已暂存、已提交等</u>) |
 | git add <file>     | 添加单个文件到暂存区                                  |
-| git add .          | 添加所有文件到暂存区                                  |
+| git add .          | 添加所有文件到暂存区，“.”表示当前目录                 |
 | git rm <file>      | 从仓库删除文件（同时删除本地文件）                    |
 | git mv <old> <new> | 重命名文件                                            |
 
@@ -63,6 +92,10 @@ git commit -m "feat: 添加用户登录功能"   # 规范commit message
 
 # 修正最近一次提交，将新的更改合并到最近一次提交中
 git commit --amend -m "fix: 修复登录逻辑"
+
+git push #将本地仓库的内容推送到远程仓库中去
+
+git pull #将远程仓库中的最新内容拉到已有的本地仓库中来
 ```
 
 ### 2.4 分支管理
@@ -78,10 +111,9 @@ git branch -a       # 所有分支
 
 ```
 # 操作分支
-git branch new-feature		# 创建分支
-git branch -m master main	# 将本地 master 分支重命名为 main 分支
-git checkout new-feature	# 切换分支
-git checkout -b new-feature	# 创建并切换分支
+git branch new-feature  # 创建分支
+git checkout new-feature # 切换分支
+git checkout -b new-feature # 创建并切换分支
 
 # 合并分支（在目标分支执行）
 git merge new-feature
@@ -214,9 +246,6 @@ git push -u origin main
 ```
 # 合并时出现冲突
 git merge feature-branch	#把 feature-branch 分支上的修改合并到当前所在的分支
-
-# 拉取远程仓库的 main 分支，并允许合并不相关的历史记录
-git pull origin main --allow-unrelated-histories
 
 # 手动编辑冲突文件（标记<<<<<<< HEAD 和 ======= 之间为本地修改，>>>>>>> 为远程修改）
 
