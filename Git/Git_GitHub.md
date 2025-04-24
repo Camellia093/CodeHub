@@ -74,7 +74,7 @@ vi test.pub		# 打开公钥文件，没有.pub是私钥文件，复制里面的�
 | git init        | 初始化本地仓库     |
 | git clone [url] | 克隆远程仓库到本地 |
 
-#### 注意：
+**注意：**
 
 当 `init.defaultBranch` 未设置时，Git 有时可能不会自动创建默认分支。
 
