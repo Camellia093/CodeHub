@@ -74,6 +74,12 @@ vi test.pub		# 打开公钥文件，没有.pub是私钥文件，复制里面的�
 | git init        | 初始化本地仓库     |
 | git clone [url] | 克隆远程仓库到本地 |
 
+#### 注意：
+
+当 `init.defaultBranch` 未设置时，Git 有时可能不会自动创建默认分支。
+
+但我们可以手动指定分支名字：git init -b main
+
 #Git 2.28 及之前的版本，执行 `git init` 命令会自动创建一个名为 `master` 的分支
 
 #Git 2.28 开始，Git 的默认初始分支名发生了改变。默认情况下，`git init` 会自动创建一个名为 `main` 的分支
