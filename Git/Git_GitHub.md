@@ -31,7 +31,7 @@ git config --global user.name <你的用户名>   #如果你的用户名中有�
 git config --global user.email <你的邮箱地址>
 ###前面两个命令只需要配置一次即可
 
-# 保存用户名和密码（这样就不用每次输入了）
+# 保存用户名和密码（这样就不用每次输入了）	store 方式是以明文形式在本地存储凭证
 git config --global credential.helper store
 
 # 查看配置
@@ -285,6 +285,19 @@ git fetch origin
 git checkout -b new-branch origin/new-branch	#-b 选项表示创建一个新的本地分支
 #在本地创建一个名为 new-branch 的分支，并将其与远程仓库中的 origin/new-branch 分支关联起来，同时切换到这个新创建的本地分支。
 ```
+
+### 4.4 连接超时
+
+GitHub本身是不太稳定的，需要一些科学上网的手段，但是刚打开的时候有时候是无法连接的
+这时候先确保你的网络正常，然后尝试推送或拉取，如果失败，一般等待一会，过一会再试就可以了
+下图是连接超时的示例
+
+![timeout](.\timeout.jpg)
+
+
+
+
+
 
 ## 五、最佳实践
 
